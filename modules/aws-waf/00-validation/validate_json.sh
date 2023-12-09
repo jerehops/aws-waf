@@ -1,10 +1,10 @@
 #!/bin/bash
 
-echo "Rule Group Statement Length Checks"
+echo "Statement Length Checks"
 echo "================================="
 echo statement_length_check = $statement_length_check
 echo
-echo "Rule Group Statement Checks"
+echo "Statement Checks"
 echo "================================="
 echo statement_check = $statement_check
 echo
