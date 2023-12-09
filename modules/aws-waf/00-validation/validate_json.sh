@@ -29,7 +29,7 @@ if [[ $statement_check != "" ]]; then
   for ((idx=0; idx<${#statement_check[@]}; ++idx)); do
     statement_check_values=${statement_check[idx]}
     read -ra values <<< "$statement_check_values"
-    if [[ "${values[@]}" != "geo_match_statement" && "${values[@]}" != "ip_set_reference_statement" && "${values[@]}" != "regex_pattern_set_reference_statement" ]];
+    if [[ "${values[@]}" != "geo_match_statement" && "${values[@]}" != "ip_set_reference_statement" && "${values[@]}" != "regex_pattern_set_reference_statement" && "${values[@]}" != "rule_group_reference_statement" && "${values[@]}" != "managed_rule_group_statement" ]];
     then
       echo "Error: Only geo_match_statement, ip_set_reference_statement, regex_pattern_set_reference_statement, rule_group_reference_statement, managed_rule_group_statement allowed"
       exit 1
