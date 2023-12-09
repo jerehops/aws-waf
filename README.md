@@ -1,9 +1,7 @@
 # Disclaimer
-***
 ### **The following example is not prouduction ready and is used for education purposes only.**
 
 # WAF Module Parameters
-***
 | **Name**                   | **Description**             |
 |----------------------------|-----------------------------|
 | name                       | Name of your WAF resource   |
@@ -15,7 +13,6 @@
 | webacl_file                | Path of JSON file           | 
 
 # About the project
-***
 While creating WAF module, I stumbled across many pain points and issues. 
 The AWS provider for WAF does not promote DRY which makes the module very bloated.
 
