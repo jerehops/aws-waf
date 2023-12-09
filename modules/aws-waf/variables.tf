@@ -2,11 +2,6 @@ variable "name" {
   type = string
 }
 
-variable "validation" {
-  type = string
-  default = "default"
-}
-
 variable "scope" {
   type = string
   validation {
