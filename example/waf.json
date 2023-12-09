@@ -1,0 +1,75 @@
+[
+  {
+    "name": "AllowRule1",
+    "priority": 1,
+    "action": {
+      "type": "allow"
+    },
+    "type": "not",
+    "statement": {
+      "ip_set_reference_statement": {
+        "arn": "arn:aws:wafv2:ap-southeast-1:000000000000:regional/ipset/my_ipset/xxxxx-xxxxxx-xxxxx-xxxxx-xxxxxxxxxx"
+      }
+    },
+    "visibility_config": {
+      "sampled_requests_enabled": true,
+      "cloudwatch_metrics_enabled": true,
+      "metric_name": "AllowRuleMetric"
+    }
+  },
+  {
+    "name": "BlockRule1",
+    "priority": 2,
+    "action": {
+      "type": "block"
+    },
+    "type": "match",
+    "statement": {
+      "regex_pattern_set_reference_statement": {
+        "arn": "arn:aws:wafv2:ap-southeast-1:000000000000:regional/regexpatternset/my_regex/xxxxx-xxxxxx-xxxxx-xxxxx-xxxxxxxxxx",
+        "field_to_match": "body",
+        "text_transformation": {
+          "priority": 5,
+          "type": "NONE"
+        }
+      },
+      "ip_set_reference_statement": {
+        "arn": "arn:aws:wafv2:ap-southeast-1:000000000000:regional/ipset/my_ipset/xxxxx-xxxxxx-xxxxx-xxxxx-xxxxxxxxxx"
+      },
+      "geo_match_statement": {
+        "country_codes": [
+          "US",
+          "AU"
+        ]
+      }
+    },
+    "visibility_config": {
+      "sampled_requests_enabled": true,
+      "cloudwatch_metrics_enabled": true,
+      "metric_name": "BlockRuleMetric"
+    }
+  },
+  {
+    "name": "AWSManagedRulesLinuxRuleSet",
+    "priority": 5,
+    "type": "managed",
+    "statement": {
+      "managed_rule_group_statement": {
+        "name": "AWSManagedRulesLinuxRuleSet",
+        "vendor_name": "AWS",
+        "rule_action_override": {
+          "challenge": [
+            "LFI_URIPATH",
+            "LFI_QUERYSTRING",
+            "LFI_HEADER"
+          ]
+        }
+      }
+    },
+    "visibility_config": {
+      "sampled_requests_enabled": true,
+      "cloudwatch_metrics_enabled": true,
+      "metric_name": "AllowRuleMetric"
+    }
+  }
+]
